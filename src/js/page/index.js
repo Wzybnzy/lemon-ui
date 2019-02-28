@@ -11,6 +11,8 @@ require(['./js/config.js'],function(){
 		var selectDate = document.querySelector('#selectDate');
 		var muiChart = document.querySelector('.mui-chart');
 		var muiBill = document.querySelector('.mui-bill');
+		var muiYear = document.querySelector('.mui-year');
+		var muiMonth = document.querySelector('.mui-month');
  		var nowYear = new Date().getFullYear();
 		var nowMonth = new Date().getMonth()+1;
 		var picker,dtPicker;
@@ -32,12 +34,15 @@ require(['./js/config.js'],function(){
 					var titleM = document.querySelector('[data-id="title-m"]');
 					var pickerY = document.querySelector('[data-id="picker-y"]');
 					var pickerM = document.querySelector('[data-id="picker-m"]');
-					if(selectItems[0].value == 'year'){
+					if(selectItems[0].value == 'year'){ 
 						selectDate.innerHTML = nowYear;
 						titleM.style.display = 'none';
 						titleY.style.width = '100%';
 						pickerM.style.display = 'none';
 						pickerY.style.width = '100%';
+						muiMonth.style.display = 'none';
+						muiYear.style.display = 'block';
+						
 					} else if(selectItems[0].value == 'month'){
 						nowMonth = nowMonth < 10 ? '0' + nowMonth * 1 : nowMonth;
 						selectDate.innerHTML = nowYear + '-' + nowMonth;
@@ -45,6 +50,8 @@ require(['./js/config.js'],function(){
 						titleY.style.width = '50%';
 						pickerM.style.display = 'inline-block';
 						pickerY.style.width = '50%';
+						muiMonth.style.display = 'block';
+						muiYear.style.display = 'none';
 					}
 				 })
 			});
@@ -73,7 +80,6 @@ require(['./js/config.js'],function(){
 					muiChart.classList.remove('none');
 					this.classList.add('active');
 					this.previousElementSibling.classList.remove('active');				}
-				
 			});
 			
 		}
