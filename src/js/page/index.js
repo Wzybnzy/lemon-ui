@@ -9,7 +9,9 @@ require(['./js/config.js'],function(){
 		
 		var selectType = document.querySelector('#selectType');
 		var selectDate = document.querySelector('#selectDate');
-		var nowYear = new Date().getFullYear();
+		var muiChart = document.querySelector('.mui-chart');
+		var muiBill = document.querySelector('.mui-bill');
+ 		var nowYear = new Date().getFullYear();
 		var nowMonth = new Date().getMonth()+1;
 		var picker,dtPicker;
 		init();
@@ -58,6 +60,21 @@ require(['./js/config.js'],function(){
 					}
 				})
 			})
+			
+			//点击tab
+			mui('#muiTabBtns').on('tap','span',function(){
+				if(this.innerHTML == '账单'){
+					this.classList.add('active');
+					muiChart.classList.add('none');
+					muiBill.classList.remove('none');
+					this.nextElementSibling.classList.remove('active');
+				} else {
+					muiBill.classList.add('none');
+					muiChart.classList.remove('none');
+					this.classList.add('active');
+					this.previousElementSibling.classList.remove('active');				}
+				
+			});
 			
 		}
 		 

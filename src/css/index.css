@@ -224,3 +224,73 @@ html {
     -ms-box-sizing: border-box;
     -o-box-sizing: border-box;
     box-sizing: border-box; }
+
+.mui-tab {
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  height: 1.17333rem;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  align-items: center;
+  padding: 0 0.4rem; }
+  .mui-tab > div {
+    height: 0.8rem;
+    width: 3.2rem;
+    border: 1px solid #ccc;
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    border-radius: 0.26667rem;
+    overflow: hidden; }
+    .mui-tab > div > span {
+      -webkit-flex: 1 1 0%;
+      flex: 1 1 0%;
+      font-size: 0.42667rem;
+      text-align: center;
+      line-height: 0.8rem; }
+    .mui-tab > div > span.active {
+      background: yellow; }
+
+.mui-content {
+  -webkit-flex: 1 1 0%;
+  flex: 1 1 0%;
+  font-size: 0.42667rem;
+  width: 100%; }
+  .mui-content > div {
+    height: 100%;
+    width: 100%; }
+  .mui-content .none {
+    display: none; }
+  .mui-content .mui-table-view-cell > .mui-navigate-right {
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    display: -webkit-flex;
+    /* NEW - Chrome */ }
+  .mui-content .mui-tabel-header-right {
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    -webkit-flex: 1 1 0%;
+    flex: 1 1 0%; }
+    .mui-content .mui-tabel-header-right > dl {
+      display: flex;
+      /* NEW, Spec - Opera 12.1, Firefox 20+ */
+      display: -webkit-flex;
+      /* NEW - Chrome */
+      -webkit-flex-direction: column;
+      flex-direction: column;
+      -webkit-flex: 1 1 0%;
+      flex: 1 1 0%;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center; }
+    .mui-content .mui-tabel-header-right > dl.pay {
+      color: red; }
+    .mui-content .mui-tabel-header-right > dl.income {
+      color: #2AC845; }
