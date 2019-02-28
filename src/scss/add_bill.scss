@@ -1,0 +1,102 @@
+@import "common.scss";
+@import "_mixin.scss";
+
+.mui-bill{
+	height: 100%;
+	width: 100%;
+	@include box_flex;
+	@include direction(column);
+	font-size:pxTorem(16px);
+	header{
+		@include box_flex;
+		@include justify(space-between);
+		@include align;
+		height:pxTorem(44px);
+		background:yellow;
+		width:100%;
+		>span{
+			width:pxTorem(100px);
+		}
+		>div{
+			@include flex;
+			@include box_flex;
+			@include justify;
+			height: pxTorem(30px);
+			>div{
+				border: 1px solid #ccc;
+				border-radius: pxTorem(10px);
+				overflow: hidden;
+				>span{
+					padding: 0 pxTorem(10px);
+					@include sizing;
+					line-height: pxTorem(30px);
+					height: pxTorem(30px);
+					display: inline-block;
+					
+				}
+				span.active{
+					background: #000000;
+					color: yellow;
+				}
+			}
+		}
+	}
+	.mui-bill-money{
+		height: pxTorem(50px);
+		width: 100%;
+		padding: 0 pxTorem(15px);
+		@incude sizing;
+		background: yellow;
+		>input{
+			background: transparent;
+			border: none;
+			border-bottom: 1px solid #000;
+			text-align: center;
+		}
+		
+	}
+	.mui-slider-list{
+		@include box_flex;
+		@include flexWrap;
+		>dl{
+			width: 25%;
+			@include box_flex;
+			@include direction (column);
+			@include justify;
+			@include align;
+		}
+	}
+	.mui-bill-time{
+		height: pxTorem(44px);
+		width: 100%;
+		padding-left: pxTorem(15px);
+		@include sizing;
+	}
+	.mui-keycode{
+		height: pxTorem(160px);
+		width: 100%;
+		@include box_flex;
+		.mui-sure{
+			width: pxTorem(80px);
+			height: 100%;
+			background: yellow;
+			line-height: pxTorem(160px);
+			text-align: center;
+		}
+		ul{
+			@include flex;
+			@include box_flex;
+			@include flexWrap;
+			>li{
+				width: 33.3%;
+				height: pxTorem(40px);
+				line-height: pxTorem(40px);
+				background: #fff;
+				text-align: center;
+				border-right: 1px solid #000;
+				border-bottom: 1px solid #000;
+			}
+		}
+		
+	}
+}

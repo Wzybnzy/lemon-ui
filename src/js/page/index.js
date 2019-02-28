@@ -41,8 +41,7 @@ require(['./js/config.js'],function(){
 						pickerM.style.display = 'none';
 						pickerY.style.width = '100%';
 						muiMonth.style.display = 'none';
-						muiYear.style.display = 'block';
-						
+						muiYear.style.display = 'block';	
 					} else if(selectItems[0].value == 'month'){
 						nowMonth = nowMonth < 10 ? '0' + nowMonth * 1 : nowMonth;
 						selectDate.innerHTML = nowYear + '-' + nowMonth;
@@ -81,6 +80,11 @@ require(['./js/config.js'],function(){
 					this.classList.add('active');
 					this.previousElementSibling.classList.remove('active');				}
 			});
+			
+			//点击加号
+			document.querySelector('#box').addEventListener('tap',function(){
+				location.href = './page/add_bill.html'
+			})
 			
 		}
 		 
