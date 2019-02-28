@@ -58,12 +58,20 @@
 	.mui-slider-list{
 		@include box_flex;
 		@include flexWrap;
+		height: pxTorem(200px);
 		>dl{
 			width: 25%;
 			@include box_flex;
 			@include direction (column);
 			@include justify;
 			@include align;
+			>dt{
+				font-size: pxTorem(24px);
+			}
+			>dd{
+				font-size: pxTorem(16px);
+				margin-top: pxTorem(10px);
+			}
 		}
 	}
 	.mui-bill-time{
@@ -76,6 +84,7 @@
 		height: pxTorem(160px);
 		width: 100%;
 		@include box_flex;
+		margin-top: pxTorem(180px);
 		.mui-sure{
 			width: pxTorem(80px);
 			height: 100%;

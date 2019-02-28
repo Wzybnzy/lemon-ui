@@ -227,7 +227,8 @@ html {
     display: -webkit-flex;
     /* NEW - Chrome */
     -webkit-flex-wrap: wrap;
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+    height: 5.33333rem; }
     .mui-bill .mui-slider-list > dl {
       width: 25%;
       display: flex;
@@ -240,6 +241,11 @@ html {
       justify-content: center;
       -webkit-align-items: center;
       align-items: center; }
+      .mui-bill .mui-slider-list > dl > dt {
+        font-size: 0.64rem; }
+      .mui-bill .mui-slider-list > dl > dd {
+        font-size: 0.42667rem;
+        margin-top: 0.26667rem; }
   .mui-bill .mui-bill-time {
     height: 1.17333rem;
     width: 100%;
@@ -255,7 +261,8 @@ html {
     display: flex;
     /* NEW, Spec - Opera 12.1, Firefox 20+ */
     display: -webkit-flex;
-    /* NEW - Chrome */ }
+    /* NEW - Chrome */
+    margin-top: 4.8rem; }
     .mui-bill .mui-keycode .mui-sure {
       width: 2.13333rem;
       height: 100%;
