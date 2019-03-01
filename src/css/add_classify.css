@@ -202,7 +202,8 @@ html {
     box-sizing: border-box;
     -webkit-align-items: center;
     align-items: center;
-    background: #fff; }
+    background: #fff;
+    color: #000; }
     .classifywrap .add_classify input {
       background: transparent;
       height: 0.8rem;

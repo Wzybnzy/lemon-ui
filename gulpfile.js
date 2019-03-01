@@ -26,6 +26,10 @@ gulp.task('server',function(){
 				{
 					source:'/addClassify',
 					target:'http://localhost:3000/classify/addClassify'
+				},
+				{
+					source:'/adduser',
+					target:'http://localhost:3000/users/adduser'
 				}
 			]
 		}));
