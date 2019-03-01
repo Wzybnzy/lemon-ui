@@ -65,12 +65,22 @@
 			@include direction (column);
 			@include justify;
 			@include align;
+			height:pxTorem(100px);
 			>dt{
+				height: pxTorem(30px);
+				width: pxTorem(30px);
+				border-radius: 100%;;
+				text-align: center;
 				font-size: pxTorem(24px);
 			}
 			>dd{
 				font-size: pxTorem(16px);
 				margin-top: pxTorem(10px);
+			}
+		}
+		>dl.active{
+			>dt{
+				background: yellow;;
 			}
 		}
 	}

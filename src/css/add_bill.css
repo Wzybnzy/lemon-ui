@@ -240,12 +240,19 @@ html {
       -webkit-justify-content: center;
       justify-content: center;
       -webkit-align-items: center;
-      align-items: center; }
+      align-items: center;
+      height: 2.66667rem; }
       .mui-bill .mui-slider-list > dl > dt {
+        height: 0.8rem;
+        width: 0.8rem;
+        border-radius: 100%;
+        text-align: center;
         font-size: 0.64rem; }
       .mui-bill .mui-slider-list > dl > dd {
         font-size: 0.42667rem;
         margin-top: 0.26667rem; }
+    .mui-bill .mui-slider-list > dl.active > dt {
+      background: yellow; }
   .mui-bill .mui-bill-time {
     height: 1.17333rem;
     width: 100%;

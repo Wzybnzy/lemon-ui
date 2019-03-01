@@ -30,6 +30,10 @@ gulp.task('server',function(){
 				{
 					source:'/adduser',
 					target:'http://localhost:3000/users/adduser'
+				},
+				{
+					source:'/getClassify',
+					target:'http://localhost:3000/classify/getClassify'
 				}
 			]
 		}));
