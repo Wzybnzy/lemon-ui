@@ -233,7 +233,7 @@ html {
         -webkit-justify-content: center;
         justify-content: center; }
         .classifywrap .mui-slider .mui-slider-group .mui-slider-item > div > div > span {
-          background: #000;
+          background: yellow;
           color: #fff;
           height: 1.06667rem;
           width: 1.06667rem;

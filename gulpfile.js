@@ -17,7 +17,17 @@ gulp.task('server',function(){
 		.pipe(server({
 			port:9090,
 			open:true,
-			livereload:true
+			livereload:true,
+			proxies:[
+				{
+					source:'/iconlist',
+					target:'http://localhost:3000/classify/iconlist'
+				},
+				{
+					source:'/addClassify',
+					target:'http://localhost:3000/classify/addClassify'
+				}
+			]
 		}));
 });
 
