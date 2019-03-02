@@ -34,6 +34,10 @@ gulp.task('server',function(){
 				{
 					source:'/getClassify',
 					target:'http://localhost:3000/classify/getClassify'
+				},
+				{
+					source:'/addbill',
+					target:'http://localhost:3000/bill/addbill'
 				}
 			]
 		}));

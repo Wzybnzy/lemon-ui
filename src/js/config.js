@@ -3,7 +3,8 @@ require.config({
 	paths:{
 		'mui':'libs/mui.min',
 		'picker':'libs/mui.picker.min',
-		'poppicker':'libs/mui.poppicker'
+		'poppicker':'libs/mui.poppicker',
+		'getuid':'utils/getuid'
 	},
 	shim:{
 		'picker':{

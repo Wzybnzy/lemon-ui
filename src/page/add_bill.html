@@ -6,6 +6,7 @@
 		<title>添加账单</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/add_bill.css"/>
 	</head>
 
@@ -22,7 +23,7 @@
 				<span></span>
 			</header>
 			<div class="mui-bill-money">
-				<input type="text" placeholder="0.00" >
+				<input type="text" placeholder="0.00" value= '0.00'id="mui-bill-money">
 			</div>
 			<div class="mui-slider">
 				  <div class="mui-slider-group" id="mui-slider-group">
@@ -39,12 +40,12 @@
 					
 				  </div>
 			</div>
-			<div class="mui-bill-time">
+			<div class="mui-bill-time" id="mui-bill-time">
 				<span class="mui-icon mui-icon-videocam"></span>
-				<span>11月10日</span>
+				<span id="mui-time" id="mui-time">11月10日</span>
 			</div>
 			<div class="mui-keycode">
-				<ul>
+				<ul id="mui-keycode">
 					<li>7</li>
 					<li>8</li>
 					<li>9</li>
