@@ -20,13 +20,40 @@
     <div class="mui-off-canvas-wrap mui-draggable mui-slide-in">
         <!-- 菜单容器 -->
         <aside class="mui-off-canvas-left">
-            <div class="mui-scroll-wrapper">
-                <div class="mui-scroll">
-                    <!-- 菜单具体展示内容 -->
-                    ...
-                </div>
-            </div>
-        </aside>
+    <div class="mui-scroll-wrapper">
+      <div class="mui-scroll">
+        <!-- 菜单具体展示内容 -->
+        <div class="mui-aside-title">
+			收支类型
+		</div>
+		<ul class="mui-aside-list" id="mui-aside-list">
+			<li class="" data-type="pay">全部支出</li>
+			<li data-type="income">全部收入</li>
+			<li data-type="balance">全部其他</li>
+		</ul>
+		<div class="mui-aside-title">
+			收支分类
+		</div>
+		<!-- 支出的分类 -->
+		<ul class="mui-aside-list" id="mui-aside-list-pay">
+			<li class="asideActive">餐饮</li>
+			<li>水果</li>
+			<li>购物</li>
+		</ul>
+		<!-- 收入的分类 -->
+		<ul class="mui-aside-list" id="mui-aside-list-icome">
+			<li class="asideActive">薪资</li>
+			<li>意外所得</li>
+			<li>奖金</li>
+		</ul>
+		
+		<div class="aside-btns">
+			<span>重置</span>
+			<span class="asideSure" id="asideSure">确定</span>
+		</div>
+      </div>
+    </div>
+  </aside>
         <!-- 主页面容器 -->
         <div class="mui-inner-wrap">
 			<div class="box" id="box">+</div>
@@ -48,7 +75,7 @@
                 </div>
             </header>
             <div class="mui-tab">
-                <span class="mui-icon mui-icon-undo"></span>
+                <span class="mui-icon mui-icon-undo" id="mui-aslide"></span>
                 <div id="muiTabBtns">
                     <span class="active">账单</span>
                     <span>图表</span>
