@@ -1,5 +1,5 @@
 require(['./js/config.js'],function(){
-	require(['mui','picker'],function(mui,picker){
+	require(['mui','picker','getuid'],function(mui,picker,getuid){
 		console.log(mui,picker);
 // 		document.querySelector('#aslideBtn').addEventListener('tap',function(){
 // 			mui('.mui-off-canvas-wrap').offCanvas('show');
@@ -15,7 +15,7 @@ require(['./js/config.js'],function(){
 		var muiMonth = document.querySelector('.mui-month');
  		var nowYear = new Date().getFullYear();
 		var nowMonth = new Date().getMonth()+1;
-		var picker,dtPicker;
+		var picker,dtPicker,paylist,incomelist,classifyArr= [];
 		init();
 		addEvent();
 		function init(){
@@ -25,7 +25,59 @@ require(['./js/config.js'],function(){
 				type:'month'
 			}); 
 		}
-		
+		getClassify();
+		//获取所有的分类
+		function getClassify(){
+			getuid(function(uid){
+				console.log(uid);
+				mui.ajax('/getClassify',{
+					dataType:'json',
+					data:{
+						id:uid
+					},
+					success:function(data){
+						console.log(data);
+						if(data.code == 0){
+							renderClassify(data.data);
+						}
+						
+					}
+				});
+			});
+		}
+		function renderClassify(data){
+			var payHtml = '',incomeHtml = '';
+			data.forEach(function(v,i){
+				classifyArr.push(v.cname);
+				if(v.type == 1){
+					payHtml += `<li>${v.cname}</li>`;
+				} else {
+					incomeHtml += `<li>${v.cname}</li>`;
+				}
+			});
+			document.querySelector('#mui-aside-list-pay').innerHTML = payHtml;
+			document.querySelector('#mui-aside-list-icome').innerHTML = incomeHtml;
+			paylist = [...document.querySelectorAll('#mui-aside-list-pay li')];
+			incomelist = [...document.querySelectorAll('#mui-aside-list-icome li')];
+			loadbill();
+		}
+		//渲染账单
+		function loadbill(){
+			var name = classifyArr.join(',');
+			getuid(function(uid){
+				mui.ajax('/getbill',{
+					dataType:'json',
+					data:{
+						uid:uid,
+						time:selectDate.innerHTML,
+						name:name
+					},
+					success:function(data){
+						console.log(data);
+					}
+				});
+			});
+		}
 		function addEvent(){
 			selectType.addEventListener('tap',function(){
 				picker.show(function (selectItems) {
@@ -85,7 +137,55 @@ require(['./js/config.js'],function(){
 			document.querySelector('#box').addEventListener('tap',function(){
 				location.href = './page/add_bill.html'
 			})
+			//点击展示侧边栏
+			document.querySelector('#mui-aslide').addEventListener('tap',function(){
+				mui('.mui-off-canvas-wrap').offCanvas().show();
+			})
+			//点击全部支出收入
+			mui('#mui-aside-list').on('tap','li',function(){
+				var type = this.dataset.type;
+				var list = type == 'pay' ? paylist : incomelist;
+// 				if(type == 'pay'){ //支出
+// 					var paylist = document.
+// 				} else if(type == 'income'){ //收入
+// 					
+// 				}
+				this.classList.toggle('asideActive');
+				if(this.classList.contains('asideActive')){
+					list.forEach(function(v,i){
+						v.classList.add('asideActive');
+					})
+				} else {
+					list.forEach(function(v,i){
+						v.classList.remove('asideActive');
+					})
+				}
+			})
+			//点击全部支出
+			mui('#mui-aside-list-pay').on('tap','li',function(){
+				this.classList.toggle('asideActive');
+				var bool = paylist.every(function(v,i){//&& 
+					return v.classList.contains('asideActive')
+				});
+				if(bool){
+					document.querySelector('[data-type="pay"]').classList.add('asideActive');
+				} else {
+					document.querySelector('[data-type="pay"]').classList.remove('asideActive');
+				}
+			});
 			
+			//点击全部收入
+			mui('#mui-aside-list-icome').on('tap','li',function(){
+				this.classList.toggle('asideActive');
+				var bool = incomelist.every(function(v,i){//&& 
+					return v.classList.contains('asideActive')
+				});
+				if(bool){
+					document.querySelector('[data-type="income"]').classList.add('asideActive');
+				} else {
+					document.querySelector('[data-type="income"]').classList.remove('asideActive');
+				}
+			});
 		}
 		 
 		

@@ -38,6 +38,10 @@ gulp.task('server',function(){
 				{
 					source:'/addbill',
 					target:'http://localhost:3000/bill/addbill'
+				},
+				{
+					source:'/getbill',
+					target:'http://localhost:3000/bill/getbill'
 				}
 			]
 		}));
