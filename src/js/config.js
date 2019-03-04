@@ -4,7 +4,8 @@ require.config({
 		'mui':'libs/mui.min',
 		'picker':'libs/mui.picker.min',
 		'poppicker':'libs/mui.poppicker',
-		'getuid':'utils/getuid'
+		'getuid':'utils/getuid',
+		'moment':'libs/moment.min'
 	},
 	shim:{
 		'picker':{

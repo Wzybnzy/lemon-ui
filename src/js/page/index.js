@@ -1,5 +1,5 @@
 require(['./js/config.js'],function(){
-	require(['mui','picker','getuid'],function(mui,picker,getuid){
+	require(['mui','picker','getuid','moment'],function(mui,picker,getuid,moment){
 		console.log(mui,picker);
 // 		document.querySelector('#aslideBtn').addEventListener('tap',function(){
 // 			mui('.mui-off-canvas-wrap').offCanvas('show');
@@ -74,9 +74,95 @@ require(['./js/config.js'],function(){
 					},
 					success:function(data){
 						console.log(data);
+						if(data.code ==0){
+							renderYear(data.data);
+// 							if(type  == 'year'){
+// 								rednerYear(data.data);
+// 							} else {
+// 								
+// 							}
+						}
+						
 					}
 				});
 			});
+		}
+		function renderYear(data){
+			console.log(data);
+			var yearObj = {},yearArr =[];
+			data.forEach(function(item){
+				var time = moment(item.time).format('MM');
+				console.log(time);
+				if(!yearObj[time]){
+					yearObj[time]={
+						time:time,
+						payTotal:0,
+						incomeTotal:0,
+						list:[]
+					};
+				}
+				yearObj[time].list.push(item);
+				if(item.type == 1){ //支出
+					yearObj[time].payTotal += item.money *1;
+				} else {
+					yearObj[time].incomeTotal += item.money *1;
+				}
+				console.log(yearObj);
+			});
+			for(var j in yearObj){
+				yearArr.push(yearObj[j])
+			}
+			console.log(yearArr);
+			var yearHtml = '';
+			yearArr.forEach(function(v,i){
+				yearHtml += `<li class="mui-table-view-cell mui-collapse">
+                                <a class="mui-navigate-right" href="#">
+                                    <div class="mui-tabel-header-left">
+                                        <span class="mui-icon mui-icon-email"></span>
+                                        <span>${v.time}月</span>
+                                    </div>
+                                    <div class="mui-tabel-header-right">
+                                        <dl class="pay">
+                                            <dt>花费</dt>
+                                            <dd>${v.payTotal}</dd>
+                                        </dl>
+                                        <dl class="income">
+                                            <dt>收入</dt>
+                                            <dd>${v.incomeTotal}</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>结余</dt>
+                                            <dd>${v.incomeTotal - v.payTotal}</dd>
+                                        </dl>
+                                    </div>
+
+                                </a>`;
+							v.list.forEach(function(bv,bi){
+								yearHtml += `<div class="mui-collapse-content">
+                                    <ul id="OA_task_1" class="mui-table-view">
+                                        <li class="mui-table-view-cell">
+                                            <div class="mui-slider-right mui-disabled">
+                                                <a class="mui-btn mui-btn-red">删除</a>
+                                            </div>
+                                            <div class="mui-slider-handle">
+                                                <div class="mui-collapse-list ${bv.type == 2? 'mui-collapse-active' :''}">
+                                                    <span class="${bv.iname}"></span>
+                                                    <div>
+                                                        <div>${bv.cname}</div>
+                                                        <span>${moment(bv.time).format('MM-DD')}</span>
+                                                    </div>
+                                                    <span>￥${bv.money}</span>
+                                                </div>
+                                            </div>  
+										</li>
+                                    </ul>
+                                </div>`;
+							});
+                                
+                                    
+                            yearHtml += `</li>`;
+			})
+			document.querySelector('#mui-year').innerHTML = yearHtml;
 		}
 		function addEvent(){
 			selectType.addEventListener('tap',function(){
